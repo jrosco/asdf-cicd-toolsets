@@ -1,0 +1,12 @@
+# https://docs.docker.com/compose/compose-file/build/
+services:
+  toolset:
+    image: ${ASDF_REGISTRY_TOOLSET}:browser-testing
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        asdf_image: "${ALPINE_IMAGE_REPO_PATH}"
+        packages: ${CICD_PACKAGES}
+      platforms:
+        - "linux/amd64"
